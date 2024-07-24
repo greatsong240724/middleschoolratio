@@ -8,7 +8,10 @@ data = pd.read_csv(file_path, encoding='cp949')
 
 # Function to clean and convert population data to integers
 def clean_population_data(pop_str):
-    return int(pop_str.replace(',', ''))
+    try:
+        return int(pop_str.replace(',', ''))
+    except ValueError:
+        return 0
 
 # Apply the function to relevant columns
 population_columns = data.columns[2:]
